@@ -35,10 +35,12 @@ class SentimentAnalysis(Resource):
         attention_mask = token['attention_mask']
         # Make a prediction
         sentiment = new_model.predict([input_ids,attention_mask])[0]
-        sentiment_labels = {0:'You seemed to be angry.', 
-                        1:'Are you afraid?', 
-                        2:'Good to see you happy.',
-                        3:'Surprise!!!'}
+        sentiment_labels = {0:'Anger', 
+                        1:'Fear', 
+                        2:'Joy',
+                        3:'Love',
+                        4:'Sadness',
+                        5:'Surprise'}
         sentiment = sentiment_labels[sentiment.argmax()]
         # Return the prediction as JSON
         return jsonify({'sentiment': sentiment})
