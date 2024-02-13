@@ -12,7 +12,6 @@ app = Flask(__name__)
 api = Api(app)
 CORS(app)
 
-  
 class index(Resource):    
      def get(self):
          return Response(render_template('index.html'))
@@ -39,9 +38,7 @@ class SentimentAnalysis(Resource):
         sentiment_labels = {0:'You seemed to be angry.', 
                         1:'Are you afraid?', 
                         2:'Good to see you happy.',
-                        3:'Love', 
-                        4:'You seemed to be afraid.',
-                        5:'Surprise!!!'}
+                        3:'Surprise!!!'}
         sentiment = sentiment_labels[sentiment.argmax()]
         # Return the prediction as JSON
         return jsonify({'sentiment': sentiment})
